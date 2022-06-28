@@ -11,16 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Volo.Abp.Desktop.UI.Dialogs;
+using Volo.Abp.Desktop.UI.ViewModels;
 using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
 
-namespace Volo.Abp.Desktop
+namespace Volo.Abp.Desktop.UI.Views
 {
     /// <summary>
     /// Interaction logic for SplashWindow.xaml
     /// </summary>
-    public partial class SplashWindow : Window
+    public partial class SplashWindow : UiWindow, IAppView, IDialogWindow
     {
-        public SplashWindow()
+        public SplashWindow(SplashWindowViewModel viewModel)
         {
             Theme.Apply(
               ThemeType.Dark,     // Theme type
@@ -28,7 +31,10 @@ namespace Volo.Abp.Desktop
               true                                  // Whether to change accents automatically
             );
 
+            DataContext = viewModel;
             InitializeComponent();
         }
+
+        public IDialogResult Result { get; set; }
     }
 }

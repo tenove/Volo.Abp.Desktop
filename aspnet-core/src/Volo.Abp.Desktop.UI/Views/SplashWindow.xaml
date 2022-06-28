@@ -1,13 +1,16 @@
-﻿<Window
-    x:Class="Volo.Abp.Desktop.SplashWindow"
+﻿<wpfui:UiWindow
+    x:Class="Volo.Abp.Desktop.UI.Views.SplashWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dig="clr-namespace:Volo.Abp.Desktop.UI.Dialogs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wpfui="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     Width="200"
     Height="50"
     AllowsTransparency="True"
+    BorderBrush="Transparent"
+    ResizeMode="NoResize"
     Style="{StaticResource UiWindow}"
     TextElement.FontSize="14"
     TextElement.FontWeight="Medium"
@@ -15,13 +18,20 @@
     WindowStyle="None"
     mc:Ignorable="d">
     <StackPanel Grid.Column="1" VerticalAlignment="Center">
+        <dig:Dialog.WindowStyle>
+            <Style TargetType="Window">
+                <Setter Property="Width" Value="780" />
+                <Setter Property="Height" Value="450" />
+                <Setter Property="SizeToContent" Value="WidthAndHeight" />
+            </Style>
+        </dig:Dialog.WindowStyle>
         <wpfui:ProgressRing IsIndeterminate="True" />
         <TextBlock
             Margin="0,12,0,0"
             FontSize="16"
             FontWeight="Medium"
-            Text="正在加载应用程序"
+            Text="{Binding DisplayText}"
             TextAlignment="Center"
             TextWrapping="Wrap" />
     </StackPanel>
-</Window>
+</wpfui:UiWindow>

@@ -45,6 +45,6 @@ public class DesktopWpfModule : AbpModule
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
 
-        services.AddSingleton<IHostDialogService, DialogHostService>();
+        services.AddScoped<IHostDialogService, DialogHostService>();
     }
 }

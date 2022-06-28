@@ -40,18 +40,13 @@ namespace Volo.Abp.Desktop.UI
         protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            var splashScreen = new SplashWindow();
-            this.MainWindow = splashScreen;
-            splashScreen.Show();
-
-            await Task.Factory.StartNew(() => OnInitializedAync(splashScreen), CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
+            await Task.Factory.StartNew(() => OnInitializedAync(), CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
         }
 
         /// <summary>
         ///
         /// </summary>
-        private async Task OnInitializedAync(SplashWindow splashScreen)
+        private async Task OnInitializedAync()
         {
             ConfigurSerilog();
 
@@ -76,17 +71,34 @@ namespace Volo.Abp.Desktop.UI
 
             this.Dispatcher.Invoke(() =>
             {
-                if (shouldContinue)
+                if (shouldContinue && SplashInitialized())
                 {
-                    if (!Authorization())
-                    {
-                        Environment.Exit(0);
-                    }
                     _abpApplication.Services.GetRequiredService<MainWindow>()?.Show();
                 }
-
-                splashScreen.Close();
             });
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
+        private bool SplashInitialized()
+        {
+            var oldShutdownMode = ShutdownMode;
+            ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
+            var dialogService = _abpApplication.Services.GetRequiredService<IHostDialogService>();
+            if (dialogService.ShowWindow(typeof(SplashWindow)).Result == ButtonResult.No)
+            {
+                if (!Authorization())
+                {
+                    Environment.Exit(0);
+                }
+            }
+
+            ShutdownMode = oldShutdownMode;
+
+            return true;
         }
 
         /// <summary>
@@ -117,7 +129,7 @@ namespace Volo.Abp.Desktop.UI
         }
 
         /// <summary>
-        ///
+        /// Foer Login Authorization
         /// </summary>
         /// <returns></returns>
         private bool Authorization()

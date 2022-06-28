@@ -125,7 +125,6 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Command="{Binding LoginCommand}"
-                    CommandParameter="LoginUser"
                     Content="登录"
                     DockPanel.Dock="Top"
                     FontSize="14"
