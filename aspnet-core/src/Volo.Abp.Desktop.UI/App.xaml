@@ -1,0 +1,29 @@
+﻿<Application
+    x:Class="Volo.Abp.Desktop.UI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:convert="clr-namespace:Volo.Abp.Desktop.UI.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <wpfui:Resources Theme="Dark" />
+                <ResourceDictionary Source="pack://application:,,,/Wpf.Ui;component/Styles/Theme/Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Wpf.Ui;component/Styles/Wpf.Ui.xaml" />
+                <!--Customer Control-->
+                <ResourceDictionary Source="pack://application:,,,/Volo.Abp.Desktop.UI;component/Themes/Paging.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <SolidColorBrush x:Key="UiBrushHyperlink" Color="#FFBBB711" />
+
+            <convert:BoolToYesNoStrConverter x:Key="boolToYesNoStrConverter" />
+            <convert:BoolToBackgroundConverter x:Key="boolToBackgroundConverter" />
+            <convert:BoolToVisibilityConverter x:Key="boolToVisibility"/>
+            <convert:InverseBoolToYesNoStrConverter x:Key="inverseboolToYesNoStrConverter" />
+            <convert:InverseBoolToBackgroundConverter x:Key="inverseboolToBackgroundConverter" />
+            <convert:InverseBoolToVisibilityConverter x:Key="inverseBoolToVisibility" />
+            <convert:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+         
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
