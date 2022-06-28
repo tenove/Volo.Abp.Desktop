@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Volo.Abp.Desktop.Ui.Dialogs
+namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// Extensions for the IDialogService

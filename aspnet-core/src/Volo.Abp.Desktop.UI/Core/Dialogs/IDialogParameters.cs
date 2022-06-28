@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Volo.Abp.Desktop.Ui.Dialogs
+namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// Represents Dialog parameters.

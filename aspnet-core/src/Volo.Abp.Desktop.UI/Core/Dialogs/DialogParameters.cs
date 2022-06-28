@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Desktop.UI.Core;
 
-namespace Volo.Abp.Desktop.Ui.Dialogs
+namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// Represents Dialog parameters.

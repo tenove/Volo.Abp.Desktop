@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 using Wpf.Ui.Common;
 using Wpf.Ui.Mvvm.Services;
 
-namespace Volo.Abp.Desktop.Ui.Services;
+namespace Volo.Abp.Desktop.UI.Services;
 
 public class NotifyIconService : NotifyIconServiceBase
 {

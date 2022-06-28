@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 
-namespace Volo.Abp.Desktop.Ui.Dialogs
+namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// Implements <see cref="IDialogService"/> to show modal and non-modal dialogs.

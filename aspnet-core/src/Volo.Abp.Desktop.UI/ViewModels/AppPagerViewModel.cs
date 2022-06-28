@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.Desktop.Ui.Dialogs;
+using Volo.Abp.Desktop.UI.Dialogs;
 
 namespace Volo.Abp.Desktop.UI.ViewModels
 {
@@ -39,11 +39,11 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// </summary>
         public IRelayCommand AddCommand { get; private set; }
 
-
         /// <summary>
         /// 当前页索引
         /// </summary>
         private int pageIndex;
+
         public int PageIndex
         {
             get => pageIndex;
@@ -54,6 +54,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// 页面大小
         /// </summary>
         private int pageSize;
+
         public int PageSize
         {
             get => pageSize;
@@ -64,6 +65,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// 总页数
         /// </summary>
         private int pageCount;
+
         public int PageCount
         {
             get => pageCount;
@@ -74,6 +76,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// 选中项
         /// </summary>
         private object selectedItem;
+
         public object SelectedItem
         {
             get => selectedItem;
@@ -84,6 +87,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// 分页按钮数量
         /// </summary>
         private int numericButtonCount;
+
         public int NumericButtonCount
         {
             get => numericButtonCount;
@@ -94,6 +98,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// 数据源
         /// </summary>
         private ObservableCollection<object> gridModelList;
+
         public ObservableCollection<object> GridModelList
         {
             get => gridModelList;
@@ -141,7 +146,6 @@ namespace Volo.Abp.Desktop.UI.ViewModels
             //    await RefreshAsync();
         }
 
-
         /// <summary>
         /// 获取弹出页名称
         /// </summary>
@@ -149,5 +153,4 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// <returns></returns>
         private string GetPageName(string methodName) => this.GetType().Name.Replace("ViewModel", $"{methodName}View");
     }
-
 }

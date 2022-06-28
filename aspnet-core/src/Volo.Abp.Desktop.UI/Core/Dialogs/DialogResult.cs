@@ -1,4 +1,4 @@
-﻿namespace Volo.Abp.Desktop.Ui.Dialogs
+﻿namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// An <see cref="IDialogResult"/> that contains <see cref="IDialogParameters"/> from the dialog

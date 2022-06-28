@@ -6,7 +6,7 @@ using Volo.Abp.BackgroundJobs;
 using Volo.Abp.BackgroundWorkers;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Desktop.EntityFrameworkCore;
-using Volo.Abp.Desktop.Ui.Services;
+using Volo.Abp.Desktop.UI.Services;
 using Volo.Abp.Modularity;
 using Wpf.Ui.Mvvm.Contracts;
 using Wpf.Ui.Mvvm.Services;
@@ -24,9 +24,8 @@ public class DesktopWpfModule : AbpModule
         AddServices(context.Services);
     }
 
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     private void Configure()
     {
@@ -36,16 +35,16 @@ public class DesktopWpfModule : AbpModule
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
-    private void AddServices(IServiceCollection services) 
+    private void AddServices(IServiceCollection services)
     {
         services.AddSingleton<IThemeService, ThemeService>();
         services.AddSingleton<ITaskBarService, TaskBarService>();
         services.AddSingleton<INotifyIconService, NotifyIconService>();
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
+
+        services.AddSingleton<IHostDialogService, DialogHostService>();
     }
-
-
 }

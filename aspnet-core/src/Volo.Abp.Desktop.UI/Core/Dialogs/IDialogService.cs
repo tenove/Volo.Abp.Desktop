@@ -1,12 +1,12 @@
 ﻿using System;
 using Volo.Abp.DependencyInjection;
 
-namespace Volo.Abp.Desktop.Ui.Dialogs
+namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// Interface to show modal and non-modal dialogs.
     /// </summary>
-    public interface IDialogService : ITransientDependency
+    public interface IDialogService
 
     {
         /// <summary>

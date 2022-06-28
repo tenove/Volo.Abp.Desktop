@@ -1,4 +1,4 @@
-﻿namespace Volo.Abp.Desktop.Ui.Dialogs
+﻿namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// <see cref="IDialogWindow"/> extensions.

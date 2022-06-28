@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.Desktop.Ui.Dialogs;
+using Volo.Abp.Desktop.UI.Dialogs;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Volo.Abp.Desktop.UI.ViewModels

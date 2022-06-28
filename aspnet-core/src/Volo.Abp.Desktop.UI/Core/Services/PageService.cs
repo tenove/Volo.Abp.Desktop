@@ -1,9 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Windows;
 using Wpf.Ui.Mvvm.Contracts;
 
-namespace Volo.Abp.Desktop.Ui.Services;
+namespace Volo.Abp.Desktop.UI.Services;
 
 /// <summary>
 /// Service that provides pages for navigation.

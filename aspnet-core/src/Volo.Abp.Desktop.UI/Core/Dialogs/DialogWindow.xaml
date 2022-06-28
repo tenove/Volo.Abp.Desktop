@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="Volo.Abp.Desktop.Ui.Dialogs.DialogWindow"
+    x:Class="Volo.Abp.Desktop.UI.Dialogs.DialogWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="{Binding Title}"

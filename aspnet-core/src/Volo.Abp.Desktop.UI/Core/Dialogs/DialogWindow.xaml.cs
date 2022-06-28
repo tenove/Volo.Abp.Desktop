@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Volo.Abp.Desktop.Ui.Dialogs
+namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// Prism's default dialog host.

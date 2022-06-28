@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Volo.Abp.Desktop.Ui.Dialogs
+namespace Volo.Abp.Desktop.UI.Dialogs
 {
     /// <summary>
     /// Interface that provides dialog functions and events to ViewModels.

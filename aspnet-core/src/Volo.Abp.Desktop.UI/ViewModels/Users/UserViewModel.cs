@@ -8,7 +8,7 @@ using Volo.Abp.Desktop.UI.Core.Threading;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.Identity;
-using Volo.Abp.Desktop.Ui.Dialogs;
+using Volo.Abp.Desktop.UI.Dialogs;
 using System.Threading;
 using System.Security.Claims;
 
@@ -25,7 +25,6 @@ namespace Volo.Abp.Desktop.UI.ViewModels
             _userAppService = userAppService;
             _roleAppService = roleAppService;
 
-
             IsAdvancedFilter = false;
             input = new GetIdentityUsersInput
             {
@@ -41,34 +40,33 @@ namespace Volo.Abp.Desktop.UI.ViewModels
             PageChangedCommand = new AsyncRelayCommand(PageIndexChanged);
         }
 
-
         #region Command
+
         public IRelayCommand AdvancedCommand { get; private set; }
         public IAsyncRelayCommand SelectedCommandAsync { get; private set; }
         public IRelayCommand SearchCommand { get; private set; }
         public IRelayCommand ResetCommand { get; private set; }
-        #endregion
 
-
+        #endregion Command
 
         public GetIdentityUsersInput input { get; set; }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private int _total = 100;
+
         public int Total
         {
             get => _total;
             set => SetProperty(ref _total, value);
         }
 
-
         /// <summary>
         /// 高级筛选
         /// </summary>
         private bool isAdvancedFilter;
+
         public bool IsAdvancedFilter
         {
             get { return isAdvancedFilter; }
@@ -85,6 +83,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// 筛选标题文本: 收缩/展开
         /// </summary>
         private string filterTitle = string.Empty;
+
         public string FilerTitle
         {
             get { return filterTitle; }
@@ -95,13 +94,12 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// 已选择权限的文本
         /// </summary>
         private string selectPermissions = string.Empty;
+
         public string SelectPermissions
         {
             get { return selectPermissions; }
             set { selectPermissions = value; OnPropertyChanged(); }
         }
-
-
 
         /// <summary>
         /// 更新选中的权限筛选文本
@@ -111,7 +109,6 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         {
             SelectPermissions = "选择权限" + $"({count})";
         }
-
 
         #region Command Action
 
@@ -138,7 +135,6 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// </summary>
         public void SearchUser()
         {
-
         }
 
         /// <summary>
@@ -153,7 +149,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private async Task PageIndexChanged()
         {
@@ -170,7 +166,6 @@ namespace Volo.Abp.Desktop.UI.ViewModels
             });
         }
 
-        #endregion
-
+        #endregion Command Action
     }
 }
