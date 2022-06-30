@@ -11,6 +11,7 @@ using Volo.Abp.Guids;
 using Volo.Abp.ObjectMapping;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Uow;
 
 namespace Volo.Abp.Desktop.UI.ViewModels
 {
@@ -19,6 +20,7 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         protected IAbpLazyServiceProvider LazyServiceProvider { get; }
         protected IDispatcher Dispatcher => LazyServiceProvider.LazyGetRequiredService<IDispatcher>();
         protected IGuidGenerator GuidGenerator => LazyServiceProvider.LazyGetService<IGuidGenerator>(SimpleGuidGenerator.Instance);
+        protected IUnitOfWorkManager UnitOfWorkManager => LazyServiceProvider.LazyGetRequiredService<IUnitOfWorkManager>();
         protected ILoggerFactory LoggerFactory => LazyServiceProvider.LazyGetRequiredService<ILoggerFactory>();
         protected ILogger Logger => LazyServiceProvider.LazyGetService<ILogger>(provider => LoggerFactory?.CreateLogger(GetType().FullName) ?? NullLogger.Instance);
         protected Type ObjectMapperContext { get; set; }

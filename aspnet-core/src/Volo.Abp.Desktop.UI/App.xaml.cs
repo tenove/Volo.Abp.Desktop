@@ -143,7 +143,7 @@ namespace Volo.Abp.Desktop.UI
             ButtonResult Validation()
             {
                 var dialogService = _abpApplication.Services.GetRequiredService<IHostDialogService>();
-                return dialogService.ShowWindow(typeof(LoginView)).Result;
+                return dialogService.ShowWindow(typeof(LoginWindow)).Result;
             }
         }
 

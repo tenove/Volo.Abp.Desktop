@@ -3,29 +3,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Volo.Abp.DependencyInjection;
-using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
-using IdentityUser = Volo.Abp.Identity.IdentityUser;
 using Volo.Abp.Identity;
-using System.Threading;
+using IdentityUser = Volo.Abp.Identity.IdentityUser;
+using Volo.Abp.Uow;
 
 namespace Volo.Abp.Desktop.UI.ViewModels
 {
-    public class LoginViewModel : AppDialogViewModel
+    public class LoginWindowViewModel : AppDialogViewModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IdentityUserManager _identityUserManager;
 
-        public LoginViewModel(IAbpLazyServiceProvider abpLazyServiceProvider, IdentityUserManager identityUserManager) : base(abpLazyServiceProvider)
+        public LoginWindowViewModel(IAbpLazyServiceProvider abpLazyServiceProvider, SignInManager<IdentityUser> signInManager, IdentityUserManager identityUserManager) : base(abpLazyServiceProvider)
         {
-            //  _signInManager = signInManager;
+            _signInManager = signInManager;
             _identityUserManager = identityUserManager;
             LoginCommand = new AsyncRelayCommand(LoginAsync);
         }
 
-        public LoginViewModel() : base()
+        public LoginWindowViewModel() : base()
         {
         }
 
@@ -34,12 +34,12 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// <summary>
         /// 租户名称
         /// </summary>
-        private string tenancyName;
+        private string tenantName;
 
-        public string TenancyName
+        public string TenantName
         {
-            get => tenancyName;
-            set => SetProperty(ref tenancyName, value);
+            get => tenantName;
+            set => SetProperty(ref tenantName, value);
         }
 
         /// <summary>
@@ -112,13 +112,16 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         {
             await SetBusyAsync(async () =>
             {
-                var signInResult = await _signInManager.PasswordSignInAsync(UserName, Password, IsRememberMe, false);
-                if (signInResult.Succeeded)
+                using (var uow = UnitOfWorkManager.Begin())
                 {
-                    var user = await _identityUserManager.FindByNameAsync(userName);
-                    var principal = await _signInManager.CreateUserPrincipalAsync(user);
-                    Thread.CurrentPrincipal = principal;
-                    await LoginUserSuccessed();
+                    var user = await _identityUserManager.FindByNameAsync(UserName);
+                    var signInResult = await _signInManager.CheckPasswordSignInAsync(user, Password, false);
+                    if (signInResult.Succeeded)
+                    {
+                        var principal = await _signInManager.CreateUserPrincipalAsync(user);
+                        Thread.CurrentPrincipal = principal;
+                        await LoginUserSuccessed();
+                    }
                 }
             });
         }

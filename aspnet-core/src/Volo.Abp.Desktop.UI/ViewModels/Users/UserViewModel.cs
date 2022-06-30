@@ -153,9 +153,10 @@ namespace Volo.Abp.Desktop.UI.ViewModels
         /// </summary>
         private async Task PageIndexChanged()
         {
-            var identity = new ClaimsIdentity();
-            identity.AddClaim(new Claim("role", "admin"));
-            Thread.CurrentPrincipal = new ClaimsPrincipal(identity);
+            var aa = Thread.CurrentPrincipal;
+            //var identity = new ClaimsIdentity();
+            //identity.AddClaim(new Claim("role", "admin"));
+            //Thread.CurrentPrincipal = new ClaimsPrincipal(identity);
 
             await SetBusyAsync(async () =>
             {

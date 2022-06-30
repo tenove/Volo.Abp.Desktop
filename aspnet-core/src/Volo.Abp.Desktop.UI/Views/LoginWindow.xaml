@@ -1,5 +1,5 @@
 ﻿<wpfui:UiWindow
-    x:Class="Volo.Abp.Desktop.UI.Views.LoginView"
+    x:Class="Volo.Abp.Desktop.UI.Views.LoginWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="clr-namespace:Volo.Abp.Desktop.UI.Behaviors"

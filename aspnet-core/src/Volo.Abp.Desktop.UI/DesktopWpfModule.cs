@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
@@ -18,6 +19,11 @@ namespace Volo.Abp.Desktop.UI;
     typeof(DesktopEntityFrameworkCoreModule))]
 public class DesktopWpfModule : AbpModule
 {
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+        context.Services.AddAbpIdentity().AddSignInManager().AddRoleManager<RoleManager<Volo.Abp.Identity.IdentityRole>>();
+    }
+
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure();
@@ -45,6 +51,6 @@ public class DesktopWpfModule : AbpModule
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
 
-        services.AddScoped<IHostDialogService, DialogHostService>();
+        services.AddSingleton<IHostDialogService, DialogHostService>();
     }
 }

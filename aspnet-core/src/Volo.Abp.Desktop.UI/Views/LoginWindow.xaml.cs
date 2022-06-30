@@ -20,9 +20,9 @@ namespace Volo.Abp.Desktop.UI.Views
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : UiWindow, IAppView, IDialogWindow
+    public partial class LoginWindow : UiWindow, IAppView, IDialogWindow
     {
-        public LoginView(LoginViewModel viewModel)
+        public LoginWindow(LoginWindowViewModel viewModel)
         {
             DataContext = viewModel;
             InitializeComponent();
